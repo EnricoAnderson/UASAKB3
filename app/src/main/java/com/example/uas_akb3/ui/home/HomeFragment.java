@@ -15,11 +15,16 @@ import com.example.uas_akb3.DataIsi;
 import com.example.uas_akb3.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
 // Dibuat oleh 10118353 Enrico Anderson IF8 pada 14 Agustus 2021
 public class HomeFragment extends Fragment {
     private RecyclerView simpan;
     private LinearLayoutManager manager;
     DataAdapter dataAdapter;
+    List<Integer> drw;
 
 
 
@@ -32,7 +37,12 @@ public class HomeFragment extends Fragment {
         simpan = (RecyclerView) root.findViewById(R.id.frag_home);
         simpan.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        dataAdapter = new DataAdapter(data);
+        drw = new ArrayList<>();
+        drw.add(R.drawable.gambar1);
+        drw.add(R.drawable.foto2);
+
+
+        dataAdapter = new DataAdapter(data,drw);
         simpan.setAdapter(dataAdapter);
 
         return root;

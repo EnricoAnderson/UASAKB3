@@ -14,21 +14,22 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 // Dibuat oleh 10118353 Enrico Anderson IF8 pada 14 Agustus 2021
 public class DataAdapter extends  FirebaseRecyclerAdapter<DataIsi, DataAdapter.ViewHolder> {
+    List<Integer> gambar;
 
-
-    public DataAdapter(@NonNull @NotNull FirebaseRecyclerOptions<DataIsi> options) {
+    public DataAdapter(@NonNull @NotNull FirebaseRecyclerOptions<DataIsi> options, List<Integer> gambar) {
         super(options);
+        this.gambar = gambar;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull DataIsi model) {
         holder.nama.setText(model.getNama());
         holder.alamat.setText(model.getAlamat());
-
-
-
+        holder.gambar.setImageResource(gambar.get(position));
     }
 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
